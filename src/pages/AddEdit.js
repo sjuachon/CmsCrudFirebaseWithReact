@@ -4,7 +4,7 @@ import "./AddEdit.css";
 import fireDb from "../firebase";
 import { toast } from "react-toastify";
 
-const initialState = {
+const initialState = {   ///////// can be expanded ////////////////
   name: "",
   email: "",
   contact: "",
@@ -15,7 +15,7 @@ const AddEdit = () => {
   const [state, setState] = useState(initialState);
   const [data, setData] = useState({});
 
-  const { name, email, contact, notes } = state;
+  const { name, email, contact, notes } = state; ///////// can be expanded ////////////////
 
   const history = useHistory();
 
@@ -54,7 +54,7 @@ const AddEdit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !email || !contact || !notes) {
+    if (!name || !email || !contact || !notes) {  ///////// can be expanded ////////////////
       toast.error("Please provide value in each input field");
     } else {
       if (!id) {
@@ -78,6 +78,9 @@ const AddEdit = () => {
       setTimeout(() => history.push("/"), 500);
     }
   };
+
+  ///////// This section can be expanded ////////////////
+
   return (
     <div style={{ marginTop: "100px" }}>
       <form
@@ -88,8 +91,8 @@ const AddEdit = () => {
           alignContent: "center",
         }}
         onSubmit={handleSubmit}
-      >
-        <label htmlFor="name">Name</label>
+      >  
+        <label htmlFor="name">Name</label>  
         <input
           type="text"
           id="name"

@@ -4,18 +4,19 @@ import "./AddEdit.css";
 import fireDb from "../firebase";
 import { toast } from "react-toastify";
 
+
 const initialState = {   ///////// can be expanded ////////////////
   name: "",
   email: "",
   contact: "",
   notes: "",
+  dataEnteredBy: "",
 };
 
 const AddEdit = () => {
   const [state, setState] = useState(initialState);
   const [data, setData] = useState({});
-
-  const { name, email, contact, notes } = state; ///////// can be expanded ////////////////
+  const { name, email, contact, notes, dataEnteredBy } = state; ///////// can be expanded ////////////////
 
   const history = useHistory();
 
@@ -54,7 +55,7 @@ const AddEdit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !email || !contact || !notes) {  ///////// can be expanded ////////////////
+    if (!name || !email || !contact || !notes || !dataEnteredBy ) {  ///////// can be expanded ////////////////
       toast.error("Please provide value in each input field");
     } else {
       if (!id) {
@@ -97,7 +98,7 @@ const AddEdit = () => {
           type="text"
           id="name"
           name="name"
-          placeHolder="Your Name..."
+          placeholder="Your Name..."
           value={name || ""}
           onChange={handleInputChange}
         />
@@ -106,7 +107,7 @@ const AddEdit = () => {
           type="email"
           id="email"
           name="email"
-          placeHolder="Your Email..."
+          placeholder="Your Email..."
           value={email || ""}
           onChange={handleInputChange}
         />
@@ -115,7 +116,7 @@ const AddEdit = () => {
           type="number"
           id="contact"
           name="contact"
-          placeHolder="Your Contact No. ..."
+          placeholder="Your Contact No. ..."
           value={contact || ""}
           onChange={handleInputChange}
         />
@@ -124,8 +125,17 @@ const AddEdit = () => {
           type="text"
           id="notes"
           name="notes"
-          placeHolder="Notes about this contact ..."
+          placeholder="Notes about this contact ..."
           value={notes || ""}
+          onChange={handleInputChange}
+        />
+        <label htmlFor="dataEnteredBy">Entry Made By</label>
+        <input
+          type="text"
+          id="dataEnteredBy"
+          name="dataEnteredBy"
+          placeholder="Who entred the data?..."
+          value={ dataEnteredBy || "" }
           onChange={handleInputChange}
         />
         <input type="submit" value={id ? "Update" : "Save"} />

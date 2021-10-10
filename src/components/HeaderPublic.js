@@ -3,7 +3,7 @@ import { Link, useLocation, useHistory } from "react-router-dom";
 // import "./Header.css";
 
 
-const Header = () => {
+const HeaderPublic = () => {
   const [activeTab, setActiveTab] = useState("Home");
   const location = useLocation();
   const [search, setSearch] = useState("");
@@ -13,9 +13,7 @@ const Header = () => {
   useEffect(() => {
     if (location.pathname === "/") {
       setActiveTab("Home");
-    } else if (location.pathname === "/add") {
-      setActiveTab("AddContact");
-    } else if (location.pathname === "/about") {
+    }  else if (location.pathname === "/about") {
       setActiveTab("About");
     } else if (location.pathname === "/profile") {
       setActiveTab("Profile");
@@ -51,14 +49,6 @@ const Header = () => {
             Home
           </p>
         </Link>
-        <Link to="/add">
-          <p
-            className={`${activeTab === "AddContact" ? "active" : ""}`}
-            onClick={() => setActiveTab("AddContact")}
-          >
-            Add Contact
-          </p>
-        </Link>
 
         <Link to="/about">
           <p
@@ -75,4 +65,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderPublic;

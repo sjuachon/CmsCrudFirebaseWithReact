@@ -49,6 +49,10 @@ const View = () => {
           <span>{user.notes}</span>
           <br />
           <br />
+          <strong>Entered By: </strong>
+          <span>{user.dataEnteredBy}</span>
+          <br />
+          <br />
           <Link to="/">
             <button className="btn btn-edit">Go Back</button>
           </Link>
